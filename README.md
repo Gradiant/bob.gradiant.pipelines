@@ -5,8 +5,7 @@ The basic processing element ([Processor](https://intranet.gradiant.org/bitbucke
 A [Pipeline](bob/gradiant/pad/pipelines/classes/pipeline/pipeline.py) is composed by a list of [Processor](https://intranet.gradiant.org/bitbucket/projects/MBPYTHON/repos/bob.gradiant.pipelines/browse/bob/gradiant/pipelines/classes/processor.py) objects. You can create your own pipeline by initializing it with a processor list.
 You can also create your own processor(s), which must fit into the [Processor](https://intranet.gradiant.org/bitbucket/projects/MBPYTHON/repos/bob.gradiant.pipelines/browse/bob/gradiant/pipelines/classes/processor.py) interface. This repo contains several examples for [postprocess](https://intranet.gradiant.org/bitbucket/projects/MBPYTHON/repos/bob.gradiant.pipelines/browse/bob/gradiant/pipelines/classes/postprocess), [dimensionality_reduction](https://intranet.gradiant.org/bitbucket/projects/MBPYTHON/repos/bob.gradiant.pipelines/browse/bob/gradiant/pipelines/classes/dimensionality_reduction), [classifiers](https://intranet.gradiant.org/bitbucket/projects/MBPYTHON/repos/bob.gradiant.pipelines/browse/bob/gradiant/pipelines/classes/classifiers), etc.
 
-
-## Environment
+## Environment
 
 We strongly recommend to use [conda](https://conda.io/docs/) to manage project environment.
 
