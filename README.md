@@ -45,7 +45,7 @@ source activate biometrics_py27
 Then, you can buildout the project with:
 
 ~~~
-  cd bob.gradiant.core
+  cd bob.gradiant.pipelines
   python bootstrap-buildout.py
   bin/buildout
 ~~~
