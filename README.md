@@ -1,5 +1,10 @@
 # bob.gradiant.pipelines 
 
+[![Build Status](https://travis-ci.org/Gradiant/bob.gradiant.pipelines.svg?branch=master)](https://travis-ci.org/Gradiant/bob.gradiant.pipelines)
+[![Doc](http://img.shields.io/badge/docs-latest-orange.svg)](https://acostapazo.github.io/bob.gradiant.pipelines/)
+
+
+
 [Bob](https://www.idiap.ch/software/bob/) package which defines a series of utilities that can help us to define an experiment. 
 The basic processing element ([Processor](https://intranet.gradiant.org/bitbucket/projects/MBPYTHON/repos/bob.gradiant.pipelines/browse/bob/gradiant/pipelines/classes/processor.py)) represents the minimum unit for data processing. 
 A [Pipeline](bob/gradiant/pad/pipelines/classes/pipeline/pipeline.py) is composed by a list of [Processor](https://intranet.gradiant.org/bitbucket/projects/MBPYTHON/repos/bob.gradiant.pipelines/browse/bob/gradiant/pipelines/classes/processor.py) objects. You can create your own pipeline by initializing it with a processor list.
