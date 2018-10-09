@@ -22,7 +22,8 @@ install:
   - conda info -a
 
   # Replace dep1 dep2 ... with your dependencies
-  - conda env create -q -f environments/biometrics_ubuntu_py27.yml python==$TRAVIS_PYTHON_VERSION
+  - conda install anaconda-client conda-build
+  - conda env create gradiant/biometrics_py27
   - source activate biometrics_py27
   - python bootstrap-buildout.py
   - bin/buildout
