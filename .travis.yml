@@ -18,12 +18,8 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda config --add channels conda-forge
   - conda update -q conda
-  # Useful for debugging any issues with conda
   - conda info -a
-
-  # Replace dep1 dep2 ... with your dependencies
-  - conda install anaconda-client conda-build
-  - conda env create gradiant/biometrics_py27
+  - conda env create -f enviroments/environment_ubuntu_py27.yml python=2.7
   - source activate biometrics_py27
   - python bootstrap-buildout.py
   - bin/buildout
