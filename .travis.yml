@@ -19,7 +19,8 @@ install:
   - conda config --add channels conda-forge
   - conda update -q conda
   - conda info -a
-  - conda env create -f environments/biometrics_ubuntu_py27.yml
+  - conda create -q -n biometrics_py27 python=$TRAVIS_PYTHON_VERSION
+  - pip install -r environments/requirements.txt
   - source activate biometrics_py27
   - python bootstrap-buildout.py
   - bin/buildout
