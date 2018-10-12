@@ -5,17 +5,17 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - appnope=0.1.0=py27_0
+  - appnope=0.1.0
   - asn1crypto=0.22.0=py27_0
   - backports.shutil_get_terminal_size=1.0.0=py27_1
   - backports_abc=0.5=py27_0
   - bkcharts=0.2=py27_0
   - blas=1.1=openblas
   - bob.extension=2.3.7=py27_0
-  - bob.io.base=2.0.12=py27_hdf51.8.17_1
+  - bob.io.base=2.0.12
   - bob.io.video=2.0.12=py27_0
-  - bob.math=2.0.3=np111py27_nomkl_3
-  - bob.measure=2.2.1=py27_0
+  - bob.math=2.0.3
+  - bob.measure=2.2.1
   - bokeh=0.13.0=py27_0
   - bzip2=1.0.6=1
   - ca-certificates=2017.7.27.1=0
@@ -81,7 +81,7 @@ dependencies:
   - scandir=1.5=py27_1
   - scikit-learn=0.19.0=py27_blas_openblas_201
   - scipy=0.19.1=py27_blas_openblas_202
-  - selenium=3.14.0=py27h1de35cc_0
+  - selenium=3.14.0
   - setuptools=36.2.2=py27_0
   - simplegeneric=0.8.1=py27_0
   - singledispatch=3.4.0.3=py27_0
@@ -128,7 +128,7 @@ dependencies:
   - freeimage=3.17.0=0
   - joblib=0.10.3=py27_0
   - opencv3=3.1.0=py27_0
-  - tbb=4.3_20141023=0
+  - tbb
   - pip:
     - backports.ssl-match-hostname==3.5.0.1
     - cloudpickle==0.5.6

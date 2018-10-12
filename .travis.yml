@@ -19,7 +19,7 @@ install:
   - conda config --add channels conda-forge
   - conda update -q conda
   - conda info -a
-  - conda env create -f environments/biometrics_ubuntu_py27.yml python=2.7
+  - conda env create -f environments/biometrics_ubuntu_py27.yml
   - source activate biometrics_py27
   - python bootstrap-buildout.py
   - bin/buildout
