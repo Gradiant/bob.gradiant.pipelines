@@ -1,7 +1,7 @@
 # bob.gradiant.pipelines 
 
 [![Build Status](https://travis-ci.org/Gradiant/bob.gradiant.pipelines.svg?branch=master)](https://travis-ci.org/Gradiant/bob.gradiant.pipelines)
-[![Doc](http://img.shields.io/badge/docs-latest-orange.svg)](https://acostapazo.github.io/bob.gradiant.pipelines/)
+[![Doc](http://img.shields.io/badge/docs-latest-orange.svg)](https://gradiant.github.io/bob.gradiant.pipelines/)
 
 
 [Bob](https://www.idiap.ch/software/bob/) package which defines a series of utilities that can help us to define an experiment. 
