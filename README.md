@@ -49,8 +49,8 @@ Note: You should be inside the package directory (bob.gradiant)
 3. Activate the environment
 
 ~~~
-   source activate bob.gradiant.pipelines
-~~
+   source activate bob.gradiant
+~~~
 
 4. Install dependencies
 
