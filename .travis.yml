@@ -1,33 +1,15 @@
+sudo: required
+
 language: python
 
-os:
-  - linux
-python:
-  - "2.7"
-  - "3.5"
-install:
-  - sudo apt-get update
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-        wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
-    else
-        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-    fi
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda config --add channels conda-forge
-  - conda update -q conda
-  - conda info -a
-  - conda create -q -n biometrics_py27 python=$TRAVIS_PYTHON_VERSION
-  - pip install -r environments/requirements.txt
-  - source activate biometrics_py27
-  - python bootstrap-buildout.py
-  - bin/buildout
+services:
+  - docker
+
+before_install:
+  - docker pull acostapazo/bob.gradiant:latest
 
 script:
-  - bin/nosetests -v
-  - bin/sphinx-build -b html doc doc/html
+  - docker run -v $(pwd):/bob.gradiant.pipelines acostapazo/bob.gradiant:latest bin/bash -c "cd bob.gradiant.core; ./ci.sh"
 
 # Deploy using travis builtin GitHub Pages support
 deploy:
