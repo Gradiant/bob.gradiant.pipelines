@@ -16,19 +16,19 @@ The fastest way to contact the package is to use docker.
 You can download the docker image from dockerhub
 
 ~~~
-docker pull acostapazo/bob.gradiant.pipelines:latest 
+docker pull acostapazo/bob.gradiant:latest 
 ~~~
 
 or build it from Dockerfile
 
 ~~~
-docker build --no-cache -t acostapazo/bob.gradiant.pipelines:latest  .
+docker build --no-cache -t acostapazo/bob.gradiant:latest  .
 ~~~
 
 To check if everything is alright you can run the ci.sh script with:
 
 ~~~
-docker run -v $(pwd):/bob.gradiant.pipelines acostapazo/bob.gradiant.pipelines:latest bin/bash -c "cd bob.gradiant.pipelines; ./ci.sh"
+docker run -v $(pwd):/bob.gradiant.pipelines acostapazo/bob.gradiant:latest bin/bash -c "cd bob.gradiant.pipelines; ./ci.sh"
 ~~~
 
 ## Installation (Manual)
@@ -38,10 +38,10 @@ docker run -v $(pwd):/bob.gradiant.pipelines acostapazo/bob.gradiant.pipelines:l
 
 2. Create the conda env from file (environment_linux.yml)
 
-Note: You should be inside the package directory (bob.gradiant.pad.paper.icb2019)
+Note: You should be inside the package directory (bob.gradiant)
 
 ~~~
-    conda create --name bob.gradiant.pipelines python=2.7
+    conda create --name bob.gradiant python=2.7
     conda config --env --add channels defaults
     conda config --env --add channels https://www.idiap.ch/software/bob/conda
 ~~~
