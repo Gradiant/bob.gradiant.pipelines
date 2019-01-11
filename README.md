@@ -64,7 +64,7 @@ docker run -v $(pwd):/bob.gradiant.pipelines acostapazo/bob.gradiant:latest bin/
     #You should be inside the activated conda env (bob.gradiant.pipelines)
     python bootstrap-buildout.py
     bin/buildout
-~~
+~~~
 
 ## Test
 
