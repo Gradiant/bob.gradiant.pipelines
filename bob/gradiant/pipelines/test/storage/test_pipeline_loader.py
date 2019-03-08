@@ -14,7 +14,7 @@ class TestPipelineLoader(unittest.TestCase):
 
     def _assert_my_dict(self, ref_dic, assert_dict):
 
-        self.assertListEqual(sorted(ref_dic.keys()),sorted(assert_dict.keys()))
+        self.assertListEqual(sorted(ref_dic.keys()), sorted(assert_dict.keys()))
 
         for key in ref_dic.keys():
             ref_v = ref_dic[key]
@@ -31,7 +31,7 @@ class TestPipelineLoader(unittest.TestCase):
         self.filename = os.path.join(self.base_path, self.basename_file + self.extension)
 
         self.names = np.array(['grad000_real_00_00.zip', 'grad001_real_00_00.zip', 'grad002_real_00_00.zip',
-                          'grad003_real_00_00.zip', 'grad004_real_00_00.zip', 'grad005_real_00_00.zip'])
+                               'grad003_real_00_00.zip', 'grad004_real_00_00.zip', 'grad005_real_00_00.zip'])
         self.features = np.array([[1, 2, 3], [4, 5, 6], [1, 2, 3], [4, 5, 6], [1, 2, 3], [4, 5, 6]])
         self.labels = np.array(['real', 'real', 'attack', 'real', 'attack', 'attack'])
         self.input_dict = {'names': self.names, 'features': self.features, 'labels': self.labels}
@@ -55,6 +55,7 @@ class TestPipelineLoader(unittest.TestCase):
         pl.load(self.base_path)
 
         self._assert_my_dict(self.input_dict, pl.X)
+
 
 if __name__ == '__main__':
     unittest.main()

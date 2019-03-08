@@ -48,13 +48,13 @@ class Processor(object):
         file_path = self.__compute_file_name(base_path)
         if not os.path.exists(file_path):
             print(file_path)
-            print ('File {} not found'.format(file_path))
+            print('File {} not found'.format(file_path))
             raise IOError()
 
         dict = {}
         h5f = h5py.File(file_path, 'r')
 
-        for k in h5f.keys():
+        for k in h5f:
             dict[k] = h5f[k].value
         self.from_dict(dict)
 

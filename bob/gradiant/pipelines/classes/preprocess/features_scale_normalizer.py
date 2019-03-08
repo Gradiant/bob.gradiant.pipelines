@@ -3,6 +3,7 @@
 # Copyright (C) 2017 Gradiant, Vigo, Spain
 
 from bob.gradiant.pipelines.classes.processor import Processor
+from bob.gradiant.pipelines.classes.default_keys_correspondences import DEFAULT_KEYS_CORRESPONDENCES
 from sklearn import preprocessing
 import pickle
 import numpy as np
@@ -11,16 +12,22 @@ import numpy as np
 class FeaturesScaleNormalizer(Processor):
     _model = None
 
-    def __init__(self, name='features_scale_normalizer'):
+    def __init__(self,
+                 name='features_scale_normalizer',
+                 keys_correspondences=DEFAULT_KEYS_CORRESPONDENCES):
         super(FeaturesScaleNormalizer, self).__init__(name)
         self._model = preprocessing.StandardScaler()
+        self.keys_correspondences = keys_correspondences
 
-    def fit(self, X):
-        self._model.fit(X['features'])
+    def fit(self, x):
+        features_key = self.keys_correspondences["features_key"]
+        self._model.fit(x[features_key])
 
-    def run(self, X):
-        X['features'] = self._model.transform(X['features'])
-        return X
+    def run(self, x):
+        features_key = self.keys_correspondences["features_key"]
+        x[features_key] = self._model.transform(x[features_key])
+
+        return x
 
     def to_dict(self):
         output_dict = {
@@ -34,15 +41,9 @@ class FeaturesScaleNormalizer(Processor):
     def printmodel(self):
         print(self._model)
 
-    def to_dict(self):
-        dict = {
-            'data': np.array(pickle.dumps(self._model))
-        }
-        return dict
-
     def __str__(self):
         description = {
-            'type': 'features score normalizer',
+            'type': 'Preprocessor',
             'name': self.name
         }
         return str(description)

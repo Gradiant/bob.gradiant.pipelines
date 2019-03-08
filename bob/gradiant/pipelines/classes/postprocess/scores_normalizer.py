@@ -3,6 +3,8 @@
 # Copyright (C) 2017 Gradiant, Vigo, Spain
 
 from bob.gradiant.pipelines.classes.processor import Processor
+from bob.gradiant.pipelines.classes.default_keys_correspondences import DEFAULT_KEYS_CORRESPONDENCES
+
 import pickle
 import numpy as np
 
@@ -25,16 +27,21 @@ def normalize(scores, min_value=None, max_value=None):
 
 
 class ScoresNormalizer(Processor):
-    def __init__(self, name='scores_normalizer'):
+    def __init__(self,
+                 name='scores_normalizer',
+                 keys_correspondences=DEFAULT_KEYS_CORRESPONDENCES):
         super(ScoresNormalizer, self).__init__(name)
+        self.keys_correspondences = keys_correspondences
 
-    def fit(self, X):
+    def fit(self, x):
         pass
 
-    def run(self, X):
-        normalized_scores = normalize(X['scores'])
-        X['scores'] = normalized_scores
-        return X
+    def run(self, x):
+        scores_key = self.keys_correspondences["scores_key"]
+
+        normalized_scores = normalize(x[scores_key])
+        x[scores_key] = normalized_scores
+        return x
 
     def to_dict(self):
         return None
@@ -44,12 +51,6 @@ class ScoresNormalizer(Processor):
 
     def printmodel(self):
         print(self._model)
-
-    def to_dict(self):
-        dict = {
-            'data': np.array(pickle.dumps(self._model))
-        }
-        return dict
 
     def save(self, base_path):
         pass

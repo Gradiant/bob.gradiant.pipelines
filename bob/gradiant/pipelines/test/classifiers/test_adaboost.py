@@ -50,7 +50,7 @@ class UnitTestAdaBoost(unittest.TestCase):
 
     @patch('sklearn.ensemble.AdaBoostClassifier.__init__', MagicMock(return_value=None))
     def test_constructor_calls_sklearn_constructor(self):
-        AdaboostProcessor(C=0.94)
+        AdaboostProcessor(c=0.94)
         AdaBoostClassifier.__init__.assert_called_once()
 
     @patch('sklearn.ensemble.AdaBoostClassifier.fit', MagicMock())
@@ -101,7 +101,7 @@ class UnitTestAdaBoost(unittest.TestCase):
         self.assertEquals('Model', ada._model)
 
     def test_describe(self):
-        description = AdaboostProcessor(C=0.75).__str__()
+        description = AdaboostProcessor(c=0.75).__str__()
 
         self.assertEquals(description, '{\'type\': \'Adaboost Processor\', \'name\': \'adaboost\'}')
 
