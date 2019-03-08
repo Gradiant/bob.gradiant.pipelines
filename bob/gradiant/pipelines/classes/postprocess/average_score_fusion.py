@@ -3,20 +3,29 @@
 # Copyright (C) 2017 Gradiant, Vigo, Spain
 
 from bob.gradiant.pipelines.classes.processor import Processor
+from bob.gradiant.pipelines.classes.default_keys_correspondences import DEFAULT_KEYS_CORRESPONDENCES
+
 import pickle
 import numpy as np
 
 
 class AverageScoreFusion(Processor):
-    def __init__(self, name='average_score_fusion'):
+    def __init__(self,
+                 name='average_score_fusion',
+                 keys_correspondences=DEFAULT_KEYS_CORRESPONDENCES):
         super(AverageScoreFusion, self).__init__(name)
+        self.keys_correspondences = keys_correspondences
 
-    def fit(self, X):
+    def fit(self, x):
         pass
 
-    def run(self, X):
-        access_ids = X['access_ids']
-        labels = X['labels']
+    def run(self, x):
+        labels_key = self.keys_correspondences["labels_key"]
+        scores_key = self.keys_correspondences["scores_key"]
+        access_ids_key = self.keys_correspondences["access_ids_key"]
+
+        access_ids = x[access_ids_key]
+        labels = x[labels_key]
         unique_access_ids = np.unique(access_ids)
 
         list_average_scores = []
@@ -24,18 +33,15 @@ class AverageScoreFusion(Processor):
         list_labels = []
         for id in unique_access_ids:
             indices = np.where(access_ids == id)
-            average_score = np.average(X['scores'][indices])
+            average_score = np.average(x[scores_key][indices])
             list_average_scores.append(average_score)
             list_access_id.append(access_ids[indices[0][0]])
             list_labels.append(labels[indices[0][0]])
 
-        X['scores'] = np.array(list_average_scores)
-        X['access_ids'] = np.array(list_access_id)
-        X['labels'] = np.array(list_labels)
-        return X
-
-    def to_dict(self):
-        return None
+        x[scores_key] = np.array(list_average_scores)
+        x[access_ids_key] = np.array(list_access_id)
+        x[labels_key] = np.array(list_labels)
+        return x
 
     def from_dict(self, dict):
         pass

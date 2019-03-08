@@ -2,6 +2,7 @@
 # Gradiant's Biometrics Team <biometrics.support@gradiant.org>
 # Copyright (C) 2017 Gradiant, Vigo, Spain
 
+from .default_keys_correspondences import *
 from .classifiers import *
 from .dimensionality_reduction import *
 from .postprocess import *

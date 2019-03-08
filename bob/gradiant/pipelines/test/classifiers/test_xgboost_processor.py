@@ -11,10 +11,10 @@ import unittest
 import h5py
 import numpy as np
 from mock import MagicMock, patch
-from sklearn.svm import LinearSVC
 
-from bob.gradiant.pipelines import LinearSvc
+from bob.gradiant.pipelines import XgboostProcessor
 from bob.gradiant.pipelines.test.test_utils import TestUtils
+from xgboost import XGBClassifier
 
 
 class MyDataset():
@@ -24,7 +24,7 @@ class MyDataset():
         self.value = value
 
 
-class UnitTestLinearSvc(unittest.TestCase):
+class UnitTestXgboostProcessor(unittest.TestCase):
     features = np.array(((0.3056649, 0.16551992, 0.81751581, 0.13783114, 0.88282389),
                          (0.43597483, 0.47153349, 0.48909926, 0.06524072, 0.54416104),
                          (0.32332448, 0.92072384, 0.42503036, 0.77241727, 0.66704238),
@@ -41,49 +41,52 @@ class UnitTestLinearSvc(unittest.TestCase):
 
     scores = np.array((0.1, 0.2, 0.3, 0.4, 0.5, 0.6))
 
-    base_path = TestUtils.get_result_path() + '/svc_tests'
+    base_path = os.path.join(TestUtils.get_result_path(), 'xgboost_tests')
 
     if not os.path.isdir(base_path):
         os.makedirs(base_path)
 
-    h5f = h5py.File(base_path + '/svc_test.h5', 'w')
+    h5f = h5py.File(base_path + '/xgboost_tests.h5', 'w')
 
-    @patch('sklearn.svm.LinearSVC.__init__', MagicMock(return_value=None))
-    def test_should_calls_sklearn_constructor_when_constructs(self):
-        LinearSvc(c=0.94)
-        LinearSVC.__init__.assert_called_once_with(C=0.94)
+    @patch('xgboost.XGBClassifier.__init__', MagicMock(return_value=None))
+    def test_constructor_calls_sklearn_constructor(self):
+        XgboostProcessor(objective="binary:logistic",
+                         random_state=42)
 
-    @patch('sklearn.svm.LinearSVC.fit', MagicMock())
-    def test_should_calls_sklearn_fit_when_fit(self):
-        svc = LinearSvc()
-        svc.fit(self.X)
+        XGBClassifier.__init__.assert_called_once_with(objective="binary:logistic",
+                                                       random_state=42)
+
+    @patch('xgboost.XGBClassifier.fit', MagicMock())
+    def test_fit_calls_sklearn_fit(self):
+        xgb = XgboostProcessor()
+        xgb.fit(self.X)
 
         labels = copy.deepcopy(self.X['labels'])
         expected_labels = copy.deepcopy(labels)
         expected_labels[labels > 0] = 0
         expected_labels[labels == 0] = 1
 
-        np.testing.assert_array_equal(LinearSVC.fit.call_args[0][0], self.X['features'])
-        np.testing.assert_array_equal(LinearSVC.fit.call_args[0][1], expected_labels)
-
-    @patch('sklearn.svm.LinearSVC.decision_function', MagicMock(return_value=scores))
-    def test_transform_calls_sklearn_transform(self):
+    def test_fit_and_run(self):
         features = self.X['features'].copy()
-        svc = LinearSvc()
+        xgb = XgboostProcessor(objective="binary:logistic",
+                               max_depth=3,
+                               n_estimators=2,
+                               random_state=42)
+        xgb.fit(self.X)
+        xgb.run(self.X)
 
-        svc.run(self.X)
-
-        np.testing.assert_array_equal(LinearSVC.decision_function.call_args[0][0], features)
+        assert 'scores' in self.X.keys()
+        assert len(self.X['scores']) == 6
 
     @patch('pickle.dumps', MagicMock(return_value='Model dump'))
     @patch('h5py.File', MagicMock(return_value=h5f))
     @patch('h5py.File.create_dataset', MagicMock())
     def test_save_model(self):
-        svc = LinearSvc(name='TestSvc')
+        xgb = XgboostProcessor(name='TestXgboost')
 
-        svc.save(self.base_path)
+        xgb.save(self.base_path)
 
-        h5py.File.assert_called_once_with(os.path.join(self.base_path, 'processors/TestSvc.h5'), 'w')
+        h5py.File.assert_called_once_with(os.path.join(self.base_path, 'processors/TestXgboost.h5'), 'w')
         self.h5f.create_dataset.assert_called_once_with('data', data=np.array('Model dump'))
 
     dataset = {
@@ -94,20 +97,24 @@ class UnitTestLinearSvc(unittest.TestCase):
     @patch('h5py.File', MagicMock(return_value=dataset))
     @patch('os.path.exists', MagicMock(return_value=True))
     def test_load_model(self):
-        svc = LinearSvc(name='TestSvc')
-        svc.load(self.base_path)
+        xgb = XgboostProcessor(name='TestXgboost')
+        xgb.load(self.base_path)
 
-        h5py.File.assert_called_once_with(os.path.join(self.base_path, 'processors/TestSvc.h5'), 'r')
+        h5py.File.assert_called_once_with(os.path.join(self.base_path, 'processors/TestXgboost.h5'), 'r')
         if sys.version_info[0] < 3:
             pickle.loads.assert_called_once_with('Model')
         else:
             pickle.loads.assert_called_once_with('Model', encoding='latin1')
-        self.assertEquals('Model', svc._model)
 
-    # def test_describe(self):
-    #     description = LinearSvc(C=0.75).__str__()
-    #
-    #     self.assertEquals(description, '{\'type\': \'Linear SVM\', \'name\': \'linear_svc\', \'C\': 0.75}')
+        self.assertEquals('Model', xgb._model)
+
+    def test_describe(self):
+        description = XgboostProcessor(objective="binary:logistic",
+                                       random_state=42).__str__()
+
+        self.assertEquals(description, '{\'type\': \'XGBClassifier\', '
+                                       '\'name\': \'xgboost\', '
+                                       '\'kwargs\': {\'objective\': \'binary:logistic\', ''\'random_state\': 42}}')
 
 
 if __name__ == '__main__':

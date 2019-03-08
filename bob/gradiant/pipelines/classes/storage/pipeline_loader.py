@@ -2,9 +2,15 @@
 # Gradiant's Biometrics Team <biometrics.support@gradiant.org>
 # Copyright (C) 2017 Gradiant, Vigo, Spain
 
-import h5py
 import os
+import h5py
+import numpy as np
 from bob.gradiant.pipelines.classes.processor import Processor
+
+try:
+    basestring
+except NameError:
+    basestring = str
 
 
 class PipelineLoader(Processor):
@@ -34,8 +40,16 @@ class PipelineLoader(Processor):
 
         file_root = h5py.File(filename, 'r')
         dict_from_file = {}
-        for key, value in file_root.iteritems():
-            dict_from_file[key.encode("utf-8")] = value[...]
+        for key, value in file_root.items():
+            if self._is_list_of_strings(value[...]):
+                dict_from_file[str(key)] = [x.decode('utf-8') for x in value[...]]
+
+            elif self._is_numpy_array_of_bytestrings(value[...]):
+                dict_from_file[str(key)] = value[...].astype('U')
+
+            else:
+                dict_from_file[str(key)] = value[...]
+
         file_root.close()
         self.X = dict_from_file
 
@@ -52,3 +66,19 @@ class PipelineLoader(Processor):
 
     def to_dict(self):
         pass
+
+    @staticmethod
+    def _is_list_of_strings(lst):
+        if not isinstance(lst, list):
+            return False
+        else:
+            return bool(lst) and not isinstance(lst, basestring) and all(isinstance(elem, basestring) for elem in lst)
+
+    @staticmethod
+    def _is_numpy_array_of_bytestrings(arr):
+        if not isinstance(arr, np.ndarray):
+            return False
+        elif np.issubdtype(arr.dtype, np.dtype('S')):
+            return True
+        else:
+            return False

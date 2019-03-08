@@ -4,6 +4,11 @@
 import copy
 from bob.gradiant.pipelines.classes.processor import Processor
 
+try:
+    basestring
+except NameError:
+    basestring = str
+
 
 class Pipeline:
     processor_list = []

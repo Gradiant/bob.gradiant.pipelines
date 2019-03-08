@@ -4,15 +4,16 @@
 
 from bob.gradiant.pipelines.classes.processor import Processor
 from bob.gradiant.pipelines.classes.default_keys_correspondences import DEFAULT_KEYS_CORRESPONDENCES
+
 import pickle
 import numpy as np
 
 
-class AverageFeatures(Processor):
+class MaxScoreFusion(Processor):
     def __init__(self,
-                 name='average_features',
+                 name='max_score_fusion',
                  keys_correspondences=DEFAULT_KEYS_CORRESPONDENCES):
-        super(AverageFeatures, self).__init__(name)
+        super(MaxScoreFusion, self).__init__(name)
         self.keys_correspondences = keys_correspondences
 
     def fit(self, x):
@@ -20,24 +21,24 @@ class AverageFeatures(Processor):
 
     def run(self, x):
         labels_key = self.keys_correspondences["labels_key"]
-        features_key = self.keys_correspondences["features_key"]
+        scores_key = self.keys_correspondences["scores_key"]
         access_ids_key = self.keys_correspondences["access_ids_key"]
 
         access_ids = x[access_ids_key]
         labels = x[labels_key]
         unique_access_ids = np.unique(access_ids)
 
-        list_average_features = []
+        list_max_scores = []
         list_access_id = []
         list_labels = []
-        for access_id in unique_access_ids:
-            indices = np.where(access_ids == access_id)
-            average_features = np.average(x[features_key][indices], axis=0)
-            list_average_features.append(average_features)
+        for id in unique_access_ids:
+            indices = np.where(access_ids == id)
+            max_score = np.amax(x[scores_key][indices])
+            list_max_scores.append(max_score)
             list_access_id.append(access_ids[indices[0][0]])
             list_labels.append(labels[indices[0][0]])
 
-        x[features_key] = np.array(list_average_features)
+        x[scores_key] = np.array(list_max_scores)
         x[access_ids_key] = np.array(list_access_id)
         x[labels_key] = np.array(list_labels)
         return x
@@ -59,7 +60,7 @@ class AverageFeatures(Processor):
 
     def __str__(self):
         description = {
-            'type': 'average score fusion',
+            'type': 'max score fusion',
             'name': self.name
         }
         return str(description)

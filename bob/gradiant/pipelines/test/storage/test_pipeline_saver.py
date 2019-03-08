@@ -52,13 +52,17 @@ class TestPipelineSaver(unittest.TestCase):
         ps.save(self.base_path)
 
         file_root = h5py.File(self.filename, 'r')
-        names_dset = file_root['/names']
-        labels_dset = file_root['/labels']
-        features_dset = file_root['/features']
+        names_dset = file_root['/names'][...]
+        names_dset = [x.decode('utf-8') for x in names_dset]
 
-        self.assertTrue(np.array_equal(names_dset[...], self.names))
-        self.assertTrue(np.array_equal(features_dset[...], self.features))
-        self.assertTrue(np.array_equal(labels_dset[...], self.labels))
+        labels_dset = file_root['/labels'][...]
+        labels_dset = [x.decode('utf-8') for x in labels_dset]
+
+        features_dset = file_root['/features'][...]
+
+        self.assertTrue(np.array_equal(names_dset, self.names))
+        self.assertTrue(np.array_equal(features_dset, self.features))
+        self.assertTrue(np.array_equal(labels_dset, self.labels))
 
     def test_stored_data_is_correct_if_modified_after_run(self):
         ps = PipelineSaver(self.basename_file)
@@ -68,13 +72,17 @@ class TestPipelineSaver(unittest.TestCase):
         ps.save(self.base_path)
 
         file_root = h5py.File(self.filename, 'r')
-        names_dset = file_root['/names']
-        labels_dset = file_root['/labels']
-        features_dset = file_root['/features']
+        names_dset = file_root['/names'][...]
+        names_dset = [x.decode('utf-8') for x in names_dset]
 
-        self.assertTrue(np.array_equal(names_dset[...], self.names))
-        self.assertTrue(np.array_equal(features_dset[...], self.features))
-        self.assertTrue(np.array_equal(labels_dset[...], self.labels))
+        labels_dset = file_root['/labels'][...]
+        labels_dset = [x.decode('utf-8') for x in labels_dset]
+
+        features_dset = file_root['/features'][...]
+
+        self.assertTrue(np.array_equal(names_dset, self.names))
+        self.assertTrue(np.array_equal(features_dset, self.features))
+        self.assertTrue(np.array_equal(labels_dset, self.labels))
 
 
 if __name__ == '__main__':

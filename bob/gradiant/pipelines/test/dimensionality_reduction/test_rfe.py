@@ -49,7 +49,7 @@ class UnitTestRecursiveFeatureElimination(unittest.TestCase):
 
         loaded_rfe = RecursiveFeatureElimination()
         loaded_rfe.load('/tmp/test_rfe_pipeline')
-        loaded_pipeline = Pipeline('name_pipeline',[loaded_rfe])
+        loaded_pipeline = Pipeline('name_pipeline', [loaded_rfe])
         Y = loaded_pipeline.run(self.X)
         np.testing.assert_almost_equal(Y['features'], np.array(([[0.2],
                                                                  [0.1],
@@ -62,11 +62,11 @@ class UnitTestRecursiveFeatureElimination(unittest.TestCase):
 
     def test_run_pipeline_saver(self):
         reduced_features = RecursiveFeatureElimination(n_features=1)
-        pipeline = Pipeline('name_pipeline',[reduced_features, PipelineSaver('dim_reduction', 'dim_reduction')])
+        pipeline = Pipeline('name_pipeline', [reduced_features, PipelineSaver('dim_reduction', 'dim_reduction')])
         pipeline.fit(self.X)
         pipeline.save('/tmp/test_rfe_pipeline_saver')
 
-        loaded_pipeline = Pipeline('name_pipeline',[PipelineLoader('dim_reduction', 'dim_reduction')])
+        loaded_pipeline = Pipeline('name_pipeline', [PipelineLoader('dim_reduction', 'dim_reduction')])
         loaded_pipeline.load('/tmp/test_rfe_pipeline_saver')
         Y = loaded_pipeline.run(self.X)
         np.testing.assert_equal(Y['features'], np.array(([[0.2],

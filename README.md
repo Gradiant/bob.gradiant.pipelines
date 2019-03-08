@@ -52,6 +52,7 @@ docker run -v $(pwd):/bob.gradiant.pipelines acostapazo/bob.gradiant:latest bin/
 ~~~
     conda install gitpython h5py pillow scikit-learn mock sphinx_rtd_theme bob.extension
     pip install enum34
+    pip install xgboost
 ~~~
 
 

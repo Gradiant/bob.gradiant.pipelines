@@ -50,7 +50,7 @@ class UnitTestGradientBoost(unittest.TestCase):
 
     @patch('sklearn.ensemble.GradientBoostingClassifier.__init__', MagicMock(return_value=None))
     def test_constructor_calls_sklearn_constructor(self):
-        GradientBoosting(C=0.94)
+        GradientBoosting(c=0.94)
         GradientBoostingClassifier.__init__.assert_called_once()
 
     @patch('sklearn.ensemble.GradientBoostingClassifier.fit', MagicMock())
@@ -101,7 +101,7 @@ class UnitTestGradientBoost(unittest.TestCase):
         self.assertEquals('Model', boost._model)
 
     def test_describe(self):
-        description = GradientBoosting(C=0.75).__str__()
+        description = GradientBoosting(c=0.75).__str__()
 
         self.assertEquals(description, '{\'type\': \'Gradient boosting processor\', \'name\': \'rfe\'}')
 

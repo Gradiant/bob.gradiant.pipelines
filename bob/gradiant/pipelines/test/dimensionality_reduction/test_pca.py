@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # Gradiant's Biometrics Team <biometrics.support@gradiant.org>
 # Copyright (C) 2017 Gradiant, Vigo, Spain
+
+import sys
 import os.path
 import pickle
 import unittest
@@ -90,12 +92,15 @@ class UnitTestPca(unittest.TestCase):
         pca.load(self.base_path)
 
         h5py.File.assert_called_once_with(os.path.join(self.base_path, 'processors/TestPca.h5'), 'r')
-        pickle.loads.assert_called_once_with('Model')
+        if sys.version_info[0] < 3:
+            pickle.loads.assert_called_once_with('Model')
+        else:
+            pickle.loads.assert_called_once_with('Model', encoding='latin1')
         self.assertEquals('Model', pca._model)
 
     def test_describe(self):
         description = Pca(n_components=0.75).__str__()
-        self.assertEquals(description, '{\'type\': \'PCA\', \'name\': \'pca\', \'n_components\': 0.75}')
+        self.assertEquals(description, '{\'type\': \'Dimensionality reduction\', \'name\': \'pca\', \'n_components\': 0.75}')
 
 
 if __name__ == '__main__':
