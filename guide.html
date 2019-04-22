@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Guide &mdash; bob.gradiant.pipelines 1.1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python API" href="py_api.html" />
+    <link rel="prev" title="bob.gradiant.pipelines" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> bob.gradiant.pipelines
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="py_api.html">Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">bob.gradiant.pipelines</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/guide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>By importing this package, you can use several machine learning <a class="reference external" href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.pipeline">sklearn-pipeline</a>-based utilities to train and classify your data.</p>
+<p>A <a class="reference internal" href="py_api.html#bob.gradiant.pipelines.Pipeline" title="bob.gradiant.pipelines.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.Pipeline</span></code></a> receives the features and then following the next steps:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="py_api.html#bob.gradiant.pipelines.Pipeline.fit" title="bob.gradiant.pipelines.Pipeline.fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.Pipeline.fit()</span></code></a>: Prepare the input data and train it</p></li>
+<li><p><a class="reference internal" href="py_api.html#bob.gradiant.pipelines.Pipeline.run" title="bob.gradiant.pipelines.Pipeline.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.Pipeline.run()</span></code></a>: Predict the scores and prepare the outputdata</p></li>
+<li><p><a class="reference internal" href="py_api.html#bob.gradiant.pipelines.Pipeline.save" title="bob.gradiant.pipelines.Pipeline.save"><code class="xref py py-func docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.Pipeline.save()</span></code></a>: Save a pipeline model.</p></li>
+</ol>
+<p>Writing routines to train and classify your data is easy using implemented <code class="xref py py-class docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.Processors</span></code>. You can chose a combination of these and use them into a <a class="reference internal" href="py_api.html#bob.gradiant.pipelines.Pipeline" title="bob.gradiant.pipelines.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.Pipeline</span></code></a>.
+Note that the order of the list matters, so take it into account while you are defining your experiment.</p>
+<p>Practical example</p>
+<p>Let’s show how it works with an example:</p>
+<p>First we should load some data:
+.. doctest:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_breast_cancer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features_train</span><span class="p">,</span> <span class="n">features_test</span><span class="p">,</span> <span class="n">labels_train</span><span class="p">,</span> <span class="n">labels_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_train</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;features&#39;</span><span class="p">:</span> <span class="n">features_train</span><span class="p">,</span><span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">labels_train</span><span class="p">}</span> <span class="c1">#prepare the data to fit pipeline input format</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_test</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;features&#39;</span><span class="p">:</span> <span class="n">features_test</span><span class="p">,</span><span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">labels_test</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, we have to define a <a class="reference internal" href="py_api.html#bob.gradiant.pipelines.Pipeline" title="bob.gradiant.pipelines.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.Pipeline</span></code></a>. In this case a PCA + LinearSVC:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bob.gradiant.pipelines</span> <span class="k">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">Pca</span><span class="p">,</span> <span class="n">LinearSvc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">Pca</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;FeaturesPca&#39;</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mf">0.95</span><span class="p">),</span><span class="n">LinearSvc</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DetectorSvc&#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>Then we can train you <a class="reference internal" href="py_api.html#bob.gradiant.pipelines.Pipeline" title="bob.gradiant.pipelines.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.Pipeline</span></code></a> with train subset:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y_train</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit_run</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;AUC for training set: &#39;</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;scores&#39;</span><span class="p">]))</span> <span class="c1">#overfitted</span>
+</pre></div>
+</div>
+<p>Once the <a class="reference internal" href="py_api.html#bob.gradiant.pipelines.Pipeline" title="bob.gradiant.pipelines.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.Pipeline</span></code></a> has finished the training we can evaluate our classifier using test data:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y_test</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;AUC for test set: &#39;</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;scores&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>We can also save learned models for future experiments:
+.. doctest:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">current_directory</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Otherwise, for loading a pipeline from saved models.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">current_directory</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="py_api.html" class="btn btn-neutral float-right" title="Python API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="bob.gradiant.pipelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gradiant
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

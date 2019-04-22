@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python API &mdash; bob.gradiant.pipelines 1.1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="User Guide" href="guide.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> bob.gradiant.pipelines
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">bob.gradiant.pipelines</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Python API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/py_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-api">
+<h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h1>
+<p>This section includes information for using the pure Python API of
+<code class="docutils literal notranslate"><span class="pre">bob.gradiant.pipelines</span></code>.</p>
+<span class="target" id="module-bob.gradiant.pipelines"></span><dl class="class">
+<dt id="bob.gradiant.pipelines.Pipeline">
+<em class="property">class </em><code class="descclassname">bob.gradiant.pipelines.</code><code class="descname">Pipeline</code><span class="sig-paren">(</span><em>name</em>, <em>list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/pipeline.html#Pipeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="bob.gradiant.pipelines.Pipeline.processor_list">
+<code class="descname">processor_list</code><em class="property"> = []</em><a class="headerlink" href="#bob.gradiant.pipelines.Pipeline.processor_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Pipeline.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/pipeline.html#Pipeline.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Pipeline.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Pipeline.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/pipeline.html#Pipeline.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Pipeline.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Pipeline.fit_run">
+<code class="descname">fit_run</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/pipeline.html#Pipeline.fit_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Pipeline.fit_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Pipeline.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>base_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/pipeline.html#Pipeline.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Pipeline.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Pipeline.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>base_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/pipeline.html#Pipeline.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Pipeline.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bob.gradiant.pipelines.Processor">
+<em class="property">class </em><code class="descclassname">bob.gradiant.pipelines.</code><code class="descname">Processor</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/processor.html#Processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="bob.gradiant.pipelines.Processor.name">
+<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#bob.gradiant.pipelines.Processor.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Processor.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/processor.html#Processor.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Processor.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Processor.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/processor.html#Processor.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Processor.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Processor.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/processor.html#Processor.to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Processor.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Processor.from_dict">
+<code class="descname">from_dict</code><span class="sig-paren">(</span><em>dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/processor.html#Processor.from_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Processor.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Processor.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>base_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/processor.html#Processor.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Processor.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Processor.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>base_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/processor.html#Processor.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Processor.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.Processor.fit_run">
+<code class="descname">fit_run</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/processor.html#Processor.fit_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Processor.fit_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="bob.gradiant.pipelines.Processor.create_path">
+<em class="property">static </em><code class="descname">create_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/processor.html#Processor.create_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.Processor.create_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bob.gradiant.pipelines.LinearSvc">
+<em class="property">class </em><code class="descclassname">bob.gradiant.pipelines.</code><code class="descname">LinearSvc</code><span class="sig-paren">(</span><em>name='linear_svc'</em>, <em>c=1.0</em>, <em>keys_correspondences={'access_ids_key': 'access_ids'</em>, <em>'features_key': 'features'</em>, <em>'indices_key': 'indices'</em>, <em>'labels_key': 'labels'</em>, <em>'output_type_key': 'output_type'</em>, <em>'scores_key': 'scores'}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/classifiers/linearsvc.html#LinearSvc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.LinearSvc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">bob.gradiant.pipelines.classes.processor.Processor</span></code></p>
+<dl class="method">
+<dt id="bob.gradiant.pipelines.LinearSvc.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/classifiers/linearsvc.html#LinearSvc.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.LinearSvc.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.LinearSvc.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/classifiers/linearsvc.html#LinearSvc.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.LinearSvc.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.LinearSvc.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/classifiers/linearsvc.html#LinearSvc.to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.LinearSvc.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.LinearSvc.from_dict">
+<code class="descname">from_dict</code><span class="sig-paren">(</span><em>dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/classifiers/linearsvc.html#LinearSvc.from_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.LinearSvc.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bob.gradiant.pipelines.LinearSvc.printmodel">
+<code class="descname">printmodel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bob/gradiant/pipelines/classes/classifiers/linearsvc.html#LinearSvc.printmodel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bob.gradiant.pipelines.LinearSvc.printmodel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="guide.html" class="btn btn-neutral" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gradiant
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
