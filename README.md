@@ -25,7 +25,7 @@ docker build --no-cache -t acostapazo/bob.gradiant:latest  .
 To check if everything is alright you can run the ci.sh script with:
 
 ~~~
-docker run -v $(pwd):/bob.gradiant.pipelines acostapazo/bob.gradiant:latest bin/bash -c "cd bob.gradiant.pipelines; ./ci.sh"
+docker run -v $(pwd):/bob.gradiant.pipelines acostapazo/bob.gradiant:latest bin/bash -c "source activate bob.gradiant; cd bob.gradiant.pipelines; ./ci.sh"
 ~~~
 
 ## Installation (Manual)
