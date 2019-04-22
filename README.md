@@ -36,32 +36,19 @@ docker run -v $(pwd):/bob.gradiant.pipelines acostapazo/bob.gradiant:latest bin/
 2. Create the conda env
 
 ~~~
-    conda create --name bob.gradiant python=2.7
+    conda env create -f envs/ubuntu_environment.yml
+~~~
+
+or if run this in macosx platform
+
+~~~
+    conda env create -f envs/mac_environment.yml
 ~~~
 
 3. Activate the environment and add some channels
 
 ~~~
    source activate bob.gradiant
-   conda config --env --add channels defaults
-   conda config --env --add channels https://www.idiap.ch/software/bob/conda
-~~~
-
-4. Install dependencies
-
-~~~
-    conda install gitpython h5py pillow scikit-learn mock sphinx_rtd_theme bob.extension
-    pip install enum34
-    pip install xgboost
-~~~
-
-
-4. Buildout the bob package
-
-~~~
-    #You should be inside the activated conda env (bob.gradiant.pipelines)
-    python bootstrap-buildout.py
-    bin/buildout
 ~~~
 
 ## Test
