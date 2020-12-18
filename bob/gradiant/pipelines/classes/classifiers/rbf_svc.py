@@ -9,6 +9,8 @@ from sklearn.svm import SVC
 import sys
 import pickle
 import numpy as np
+from dill import dill
+dill._reverse_typemap['ObjectType'] = object # Make it compatible with Objects serialized with pickle in Python 2
 
 
 class RbfSvc(Processor):
